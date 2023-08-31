@@ -1,10 +1,10 @@
-import { BillbroadsClient } from "./components/client";
+import { BillboardsClient } from "./components/client";
 
 const BillbroadsPage = () => {
     return (
         <div className="flex-col">
             <div className="flex-1 space-y-4 p-8 pt-6">
-                <BillbroadsClient/>
+                <BillboardsClient/>
             </div>
         </div>
       );

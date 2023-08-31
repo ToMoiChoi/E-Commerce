@@ -6,7 +6,7 @@ import { Separator } from "@/components/ui/separator"
 import { Plus } from "lucide-react"
 import { useParams, useRouter } from "next/navigation"
 
-export const BillbroadsClient = () =>{
+export const BillboardsClient = () =>{
     const router = useRouter();
     const params = useParams();
     
@@ -17,7 +17,7 @@ export const BillbroadsClient = () =>{
                 title="Billbroads"
                 description="Manage"
             />
-            <Button onClick={()=> router.push(`/${params.storeId}/billbroads/new`)}>
+            <Button onClick={()=> router.push(`/${params.storeId}/billboards/new`)}>
                 <Plus className="mr-2 h-4 w-4"/>
                 Add New
             </Button>

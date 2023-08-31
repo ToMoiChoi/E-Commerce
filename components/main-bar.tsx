@@ -19,10 +19,10 @@ export function MainNav({
             active: pathname === `/${params.storeId}`,
         },
         {
-            href: `/${params.storeId}/billbroads`,
-            label: 'Billbroads',
-            active: pathname === `/${params.storeId}/billbroads`,
-        },
+            href: `/${params.storeId}/billboards`,
+            label: 'Billboards',
+            active: pathname === `/${params.storeId}/billboards`,
+          },
         {
             href: `/${params.storeId}/settings`,
             label: 'Settings',
