@@ -9,20 +9,20 @@ import { Heading } from "@/components/ui/heading";
 import { Separator } from "@/components/ui/separator";
 import { ApiList } from "@/components/ui/api-list";
 
-import { columns, ProductColumn } from "./columns";
+import { ProductColumn, columns } from "./columns";
 
-interface ProductClientProps {
+interface ProductsClientProps {
   data: ProductColumn[];
-}
+};
 
-export const ProductClient: React.FC<ProductClientProps> = ({
+export const ProductsClient: React.FC<ProductsClientProps> = ({
   data
 }) => {
   const params = useParams();
   const router = useRouter();
 
   return (
-    <>
+    <> 
       <div className="flex items-center justify-between">
         <Heading title={`Products (${data.length})`} description="Manage products for your store" />
         <Button onClick={() => router.push(`/${params.storeId}/products/new`)}>
@@ -30,7 +30,7 @@ export const ProductClient: React.FC<ProductClientProps> = ({
         </Button>
       </div>
       <Separator />
-      <DataTable searchKey="label" columns={columns} data={data} />
+      <DataTable searchKey="name" columns={columns} data={data} />
       <Heading title="API" description="API Calls for Products" />
       <Separator />
       <ApiList entityName="products" entityIdName="productId" />
