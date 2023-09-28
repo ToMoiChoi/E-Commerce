@@ -1,14 +1,13 @@
 "use client"
 
+import { useState } from "react"
 import {
   ColumnDef,
   ColumnFiltersState,
-  SortingState,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
-  getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table"
 
@@ -20,14 +19,13 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { Button } from "./button"
-import React from "react"
-import { Input } from "./input"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
-  data: TData[]
-  searchKey:string
+  data: TData[],
+  searchKey: string;
 }
 
 export function DataTable<TData, TValue>({
@@ -35,10 +33,7 @@ export function DataTable<TData, TValue>({
   data,
   searchKey,
 }: DataTableProps<TData, TValue>) {
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  )
-
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const table = useReactTable({
     data,
     columns,
@@ -48,8 +43,8 @@ export function DataTable<TData, TValue>({
     getFilteredRowModel: getFilteredRowModel(),
     state: {
       columnFilters,
-    },
-  })
+    }
+  });
 
   return (
     <div>

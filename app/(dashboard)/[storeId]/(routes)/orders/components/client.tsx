@@ -13,7 +13,6 @@ interface OrderClientProps {
 export const OrderClient: React.FC<OrderClientProps> = ({
   data
 }) => {
-
   return (
     <>
       <Heading title={`Orders (${data.length})`} description="Manage orders for your store" />

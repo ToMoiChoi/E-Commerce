@@ -1,12 +1,13 @@
 import { format } from "date-fns";
 
 import prismadb from "@/lib/prismadb";
+import { formatter } from "@/lib/utils";
 
 import { OrderColumn } from "./components/columns"
 import { OrderClient } from "./components/client";
-import { formatter } from "@/lib/utils";
 
-const OrderPage = async ({
+
+const OrdersPage = async ({
   params
 }: {
   params: { storeId: string }
@@ -15,10 +16,10 @@ const OrderPage = async ({
     where: {
       storeId: params.storeId
     },
-    include:{
+    include: {
       orderItems: {
         include: {
-          product: true,
+          product: true
         }
       }
     },
@@ -31,7 +32,7 @@ const OrderPage = async ({
     id: item.id,
     phone: item.phone,
     address: item.address,
-    products: item.orderItems.map((orderItem) =>orderItem.product.name).join(", "),
+    products: item.orderItems.map((orderItem) => orderItem.product.name).join(', '),
     totalPrice: formatter.format(item.orderItems.reduce((total, item) => {
       return total + Number(item.product.price)
     }, 0)),
@@ -48,4 +49,4 @@ const OrderPage = async ({
   );
 };
 
-export default OrderPage;
+export default OrdersPage;

@@ -1,16 +1,13 @@
-'use client'
+import { create } from 'zustand';
 
-import { create } from 'zustand'
-
-interface useStoreModalProps {
-    isOpen: boolean
-    onOpen: () => void;
-    onClose: () => void;
-
+interface useStoreModalStore {
+  isOpen: boolean;
+  onOpen: () => void;
+  onClose: () => void;
 }
 
-export const useStoreModal =  create<useStoreModalProps>((set) => ({
-    isOpen:false,
-    onOpen: ()  => set({ isOpen: true}),
-    onClose: () => set({ isOpen: false}),
-}))
+export const useStoreModal = create<useStoreModalStore>((set) => ({
+  isOpen: false,
+  onOpen: () => set({ isOpen: true }),
+  onClose: () => set({ isOpen: false }),
+}));

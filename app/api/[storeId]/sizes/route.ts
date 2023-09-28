@@ -33,7 +33,7 @@ export async function POST(
     const storeByUserId = await prismadb.store.findFirst({
       where: {
         id: params.storeId,
-        userId,
+        userId
       }
     });
 
@@ -41,15 +41,15 @@ export async function POST(
       return new NextResponse("Unauthorized", { status: 405 });
     }
 
-    const sizs = await prismadb.size.create({
+    const size = await prismadb.size.create({
       data: {
         name,
         value,
-        storeId: params.storeId,
+        storeId: params.storeId
       }
     });
   
-    return NextResponse.json(sizs);
+    return NextResponse.json(size);
   } catch (error) {
     console.log('[SIZES_POST]', error);
     return new NextResponse("Internal error", { status: 500 });
@@ -73,7 +73,7 @@ export async function GET(
   
     return NextResponse.json(sizes);
   } catch (error) {
-    console.log('[SIZE_GET]', error);
+    console.log('[SIZES_GET]', error);
     return new NextResponse("Internal error", { status: 500 });
   }
 };
